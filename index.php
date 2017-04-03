@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 include_once('config.php');
 include_once('includes/sip2.php');
@@ -8,22 +9,23 @@ if (isset($_SERVER['QUERY_STRING'])) {
   $formaction .= "?" . htmlentities($_SERVER['QUERY_STRING']);
 }
 
-$page='home';
-//set page for inclusion below
-if (!empty($_GET['page']) && file_exists('pages/'.$_GET['page'].'.php')){
-	$page=$_GET['page'];
-	$include='pages/'.$page.'.php';
-//if there's no page listed go to the home page
-} else {
-	header('location:index.php?page='.$page);
-}
+
+
+// Get page to be included below
+if (!empty($_GET['page']) && file_exists('pages/'.$_GET['page'].'.php'))
+  $page=$_GET['page'];
+else
+  // ...if no page was requested assume 'home'
+  $page='home';
+
+
 
 //header
 include_once('includes/header.php');
 
 //include page
-include_once($include);
+include_once('pages/'.$page.'.php');
 
 //footer
 include_once('includes/footer.php');
-?>
+
