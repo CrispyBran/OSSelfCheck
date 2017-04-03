@@ -700,12 +700,12 @@ class sip2 {
         } else {
             $this->_debugmsg( "SIP2: Socket Created" );
         }
-        $this->_debugmsg( "SIP2: Attempting to connect to '$address' on port '{$this->port}'...");
+        $this->_debugmsg( "SIP2: Attempting to connect to '$this->hostname' ($address) on port '{$this->port}'...");
 
         /* open a connection to the host */
         $result = socket_connect($this->socket, $address, $this->port);
-        if (!$result) {
-            $this->_debugmsg("SIP2: socket_connect() failed.\nReason: ($result) " . socket_strerror($result));
+        if (!$oresult) {
+					  $this->_debugmsg("SIP2: socket_connect() failed. Reason: (". socket_last_error($this->socket). ") " . socket_strerror(socket_last_error($this->socket)));
         } else {
             $this->_debugmsg( "SIP2: --- SOCKET READY ---" );
         }
