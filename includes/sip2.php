@@ -705,7 +705,7 @@ class sip2 {
         /* open a connection to the host */
         $result = socket_connect($this->socket, $address, $this->port);
         if (!$oresult) {
-					  $this->_debugmsg("SIP2: socket_connect() failed. Reason: (". socket_last_error($this->socket). ") " . socket_strerror(socket_last_error($this->socket)));
+            $this->_debugmsg("SIP2: socket_connect() failed. Reason: (". socket_last_error($this->socket). ") " . socket_strerror(socket_last_error($this->socket)));
         } else {
             $this->_debugmsg( "SIP2: --- SOCKET READY ---" );
         }
